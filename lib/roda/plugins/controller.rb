@@ -22,7 +22,7 @@ class Roda
       def self.underscore(name, acronym_regex: /(?=a)b/)
         return name unless name =~ /[A-Z-]|::/
 
-        name.gsub!(/Controller$/, "")
+        name = name.gsub(/Controller$/, "")
 
         word = name.to_s.gsub("::", "/")
         word.gsub!(/(?:(?<=([A-Za-z\d]))|\b)(#{acronym_regex})(?=\b|[^a-z])/) { "#{$1 && '_' }#{$2.downcase}" }
